@@ -1,0 +1,177 @@
+<!-- signup.html : Sign Up Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - TechEase Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">TechEase</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signin.html">Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign Up Section -->
+    <main class="container my-5">
+        <h1>Create an Account</h1>
+        <p>Fill in the form below to create your TechEase account.</p>
+
+        <form id="signupForm">
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullname" placeholder="Your Full Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3">
+        &copy; 2025 TechEase Solutions | All Rights Reserved
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Form validation and submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Validate full name (human name with acceptable characters)
+            const nameRegex = /^[a-zA-Z\s]{2,50}$/;
+            if (!nameRegex.test(fullname)) {
+                errorMessage += '• Full name must be 2-50 characters, letters and spaces only\n';
+                isValid = false;
+            }
+            
+            // Validate email address structure
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                errorMessage += '• Please enter a valid email address\n';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 8) {
+                errorMessage += '• Password must be at least 8 characters long\n';
+                isValid = false;
+            }
+            
+            // Validate password confirmation
+            if (password !== confirmPassword) {
+                errorMessage += '• Passwords do not match\n';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Submit to database
+                const formData = new FormData();
+                formData.append('fullname', fullname);
+                formData.append('email', email);
+                formData.append('password', password);
+                formData.append('confirmPassword', confirmPassword);
+                
+                fetch('auth/register.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        this.reset();
+                    } else {
+                        if (data.errors) {
+                            alert('Please fix the following errors:\n' + data.errors.join('\n'));
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Registration failed. Please try again.');
+                });
+            } else {
+                alert('Please fix the following errors:\n' + errorMessage);
+            }
+        });
+
+        // Real-time validation feedback
+        document.getElementById('fullname').addEventListener('input', function() {
+            const nameRegex = /^[a-zA-Z\s]{2,50}$/;
+            if (this.value.trim() && !nameRegex.test(this.value.trim())) {
+                this.classList.add('is-invalid');
+            } else {
+                this.classList.remove('is-invalid');
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (this.value.trim() && !emailRegex.test(this.value.trim())) {
+                this.classList.add('is-invalid');
+            } else {
+                this.classList.remove('is-invalid');
+            }
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            if (this.value.length > 0 && this.value.length < 8) {
+                this.classList.add('is-invalid');
+            } else {
+                this.classList.remove('is-invalid');
+            }
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            if (this.value && this.value !== password) {
+                this.classList.add('is-invalid');
+            } else {
+                this.classList.remove('is-invalid');
+            }
+        });
+    </script>
+</body>
+</html>
