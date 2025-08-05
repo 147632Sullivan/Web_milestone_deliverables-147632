@@ -1,0 +1,384 @@
+/* TechEase Solutions - Dark Theme CSS */
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50; /* Dark Blue-Gray */
+    background-color: #f8f9fa; /* Light Gray Background */
+}
+
+h1, h2, h3 {
+    color: #34495e; /* Darker Blue-Gray for Headings */
+}
+
+p {
+    color: #2c3e50; /* Darker Text */
+}
+
+/* Navbar - Darker Theme */
+.navbar {
+    background-color: #1a252f; /* Very Dark Blue */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .nav-link,
+.navbar-brand {
+    color: #ecf0f1; /* Light Gray */
+}
+
+.navbar .nav-link:hover,
+.navbar-brand:hover {
+    color: #3498db; /* Soft Blue */
+}
+
+/* Buttons - Softer Colors */
+.btn-primary {
+    background-color: #2980b9; /* Darker Blue */
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3498db; /* Lighter Blue on Hover */
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Hero Section - Darker */
+.hero-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero Image Styling */
+.hero-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-image-container img {
+    transition: all 0.3s ease;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.hero-image-container:hover img {
+    transform: scale(1.02);
+    filter: brightness(1.2) contrast(1.2);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.tech-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 50%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+    border-radius: inherit;
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* Cards - Softer Shadows */
+.card {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Footer - Darker */
+footer {
+    background: #1a252f; /* Very Dark Blue */
+    color: #ecf0f1;
+}
+
+/* Forms - Softer Styling */
+.form-control {
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Table - Softer Styling */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.table thead th {
+    background-color: #34495e; /* Dark Blue-Gray */
+    color: #ecf0f1;
+    border: none;
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Badge Styling */
+.badge.bg-primary {
+    background-color: #2980b9 !important;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Section Backgrounds */
+.bg-light {
+    background-color: #ecf0f1 !important;
+}
+
+/* Text Colors */
+.text-muted {
+    color: #7f8c8d !important;
+}
+
+/* Links */
+a {
+    color: #2980b9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #3498db;
+}
+
+/* Tech Showcase Styling */
+.tech-showcase {
+    position: relative;
+    display: inline-block;
+}
+
+.tech-showcase img {
+    transition: all 0.3s ease;
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.tech-showcase:hover img {
+    transform: scale(1.02);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.showcase-caption {
+    transition: all 0.3s ease;
+}
+
+.tech-showcase:hover .showcase-caption h4 {
+    color: #2980b9 !important;
+}
+
+/* Product Cards Styling */
+.product-card {
+    transition: all 0.3s ease;
+    border: none;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-card .card-img-top {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.product-card .badge {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 1rem;
+}
+
+/* Category Filter Buttons */
+.btn-outline-primary.active {
+    background-color: #2980b9;
+    border-color: #2980b9;
+    color: white;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+/* Service Cards Styling */
+.service-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(52, 152, 219, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+}
+
+.service-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover .service-title {
+    color: #3498db;
+}
+
+.service-description {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+    font-size: 0.95rem;
+}
+
+.service-features li i {
+    color: #27ae60;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.service-btn {
+    display: inline-flex;
+    align-items: center;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.service-btn i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.service-btn:hover {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.service-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Section Divider */
+.divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 2px;
+    margin-top: 1rem;
+}
+
+/* Background Light Section */
+.bg-light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%) !important;
+}
